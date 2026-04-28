@@ -130,11 +130,12 @@ export function fillHook(template, vars) {
         v = v[0].toUpperCase() + v.slice(1)
       }
     } else {
-      // Lowercase each word's leading letter unless the word is an acronym
-      // (2+ consecutive uppercase letters like "SEO", "B2B", "LED").
+      // Lowercase each word's leading letter, EXCEPT when the word looks like
+      // a proper noun or brand: any uppercase letter past index 0 means leave
+      // it alone (covers "MagMod", "iPhone", "YouTube", "SEO", "B2B", "LED").
       v = v.replace(/(^|[\s\-/])([A-Za-z])(\w*)/g, (_, sep, first, rest) => {
-        const isAcronym = rest.length >= 1 && rest[0] === rest[0].toUpperCase() && /[A-Z]/.test(rest[0])
-        return sep + (isAcronym ? first : first.toLowerCase()) + rest
+        const hasInnerCap = /[A-Z]/.test(rest)
+        return sep + (hasInnerCap ? first : first.toLowerCase()) + rest
       })
     }
     return v
