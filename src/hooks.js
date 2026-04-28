@@ -85,14 +85,33 @@ export const HOOKS = [
   { c: 'story',       t: "I had {amount} on the line. {topic} was the only thing standing in the way." },
   { c: 'story',       t: "Six months ago I didn't know the first thing about {topic}. Now I {result}." },
   { c: 'story',       t: "There's a moment in every {audience}'s life where {topic} either makes them or breaks them." },
+
+  // ── PHOTOGRAPHY-SPECIFIC ──────────────────────
+  { c: 'curiosity',   t: "The lighting trick that made my photos look 10x more expensive: {topic}." },
+  { c: 'curiosity',   t: "I shot the same scene two ways. {topic} won every time." },
+  { c: 'contrarian',  t: "Buying more gear won't fix {topic}. Here's what will." },
+  { c: 'contrarian',  t: "Natural light isn't always king. {topic} proves it." },
+  { c: 'contrarian',  t: "Stop chasing the golden hour. {topic} works at any hour." },
+  { c: 'callout',     t: "Photographers: if your photos look flat, it's not your camera. It's {topic}." },
+  { c: 'callout',     t: "If you charge less than $1k per shoot, this {topic} hook is for you." },
+  { c: 'big-promise', t: "How {topic} turned my Instagram into a booking funnel in {timeframe}." },
+  { c: 'big-promise', t: "Master {topic} and your clients stop asking about price." },
+  { c: 'fear',        t: "Your competitors are already using {topic}. Every shoot you don't, you fall further behind." },
+  { c: 'fear',        t: "If your portfolio still looks like everyone else's, {topic} is the reason." },
+  { c: 'number',      t: "Three lighting setups using {topic} that beat every preset I've ever bought." },
+  { c: 'number',      t: "I shot {amount} weddings before {topic} finally clicked. Don't make my mistake." },
+  { c: 'authority',   t: "I've shot over 200 weddings. {topic} is the one thing I'd never skip." },
+  { c: 'authority',   t: "Pro photographers don't talk about {topic}, but every single one uses it." },
+  { c: 'story',       t: "I shot a wedding without {topic} once. Never again. Here's why." },
+  { c: 'story',       t: "A bride once told me my photos looked different. The reason? {topic}." },
 ]
 
 const FALLBACKS = {
-  audience:  'people',
-  result:    'real results',
-  timeframe: '90 days',
+  audience:  'photographers',
+  result:    'images that book clients',
+  timeframe: '30 days',
   amount:    'thousands',
-  pain:      'burnout',
+  pain:      'flat, lifeless light',
 }
 
 export function fillHook(template, vars) {
@@ -105,12 +124,18 @@ export function fillHook(template, vars) {
     // (all caps like "SEO") or the value already starts lowercase.
     const before = str.slice(0, offset)
     const atStart = offset === 0 || /[.!?]\s*$/.test(before)
-    if (!atStart) {
-      const firstTwo = v.slice(0, 2)
-      const isAcronym = firstTwo.length === 2 && firstTwo === firstTwo.toUpperCase() && /[A-Z]/.test(firstTwo[1])
-      if (!isAcronym && v[0] !== v[0].toLowerCase()) {
-        v = v[0].toLowerCase() + v.slice(1)
+    if (atStart) {
+      // Capitalize first letter so it reads as a proper sentence opener
+      if (v[0] && v[0] !== v[0].toUpperCase()) {
+        v = v[0].toUpperCase() + v.slice(1)
       }
+    } else {
+      // Lowercase each word's leading letter unless the word is an acronym
+      // (2+ consecutive uppercase letters like "SEO", "B2B", "LED").
+      v = v.replace(/(^|[\s\-/])([A-Za-z])(\w*)/g, (_, sep, first, rest) => {
+        const isAcronym = rest.length >= 1 && rest[0] === rest[0].toUpperCase() && /[A-Z]/.test(rest[0])
+        return sep + (isAcronym ? first : first.toLowerCase()) + rest
+      })
     }
     return v
   })

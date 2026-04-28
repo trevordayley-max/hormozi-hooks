@@ -123,6 +123,12 @@ input:focus, textarea:focus, select:focus {
   color: var(--fg-2);
   margin-top: 4px;
 }
+.field .desc {
+  font-size: var(--fs-1);
+  color: var(--fg-2);
+  margin: -4px 0 8px;
+  line-height: var(--lh-body);
+}
 
 .section-title {
   font-family: var(--font-display);

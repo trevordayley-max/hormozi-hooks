@@ -76,11 +76,12 @@ export default function App() {
 
       <header className="hero">
         <div className="hero-inner">
-          <span className="eyebrow on-dark">Hormozi Hook Generator</span>
-          <h1>Scroll-stopping hooks. <em>On demand.</em></h1>
+          <span className="eyebrow on-dark">Hooks for Photographers</span>
+          <h1>Stop the scroll. <em>Book the shoot.</em></h1>
           <p className="lede">
-            Drop in a topic. Pick the angles you want. Walk out with a stack of
-            hooks built on the same frameworks Alex Hormozi uses to stop the thumb.
+            Drop in what you shoot, who you shoot it for, and the result they want.
+            Walk out with a stack of hooks built on Hormozi's frameworks, written
+            for photographers who want to fill their calendar.
           </p>
         </div>
       </header>
@@ -92,57 +93,62 @@ export default function App() {
 
             <div className="field">
               <label htmlFor="topic">Topic <span style={{color:'var(--mm-error)'}}>*</span></label>
+              <p className="desc">The thing you teach, shoot, or sell. The only required field. Drop in a skill, a niche, or a service.</p>
               <input
                 id="topic"
                 type="text"
                 value={topic}
                 onChange={(e) => setTopic(e.target.value)}
-                placeholder="e.g., cold outreach, building credit, Instagram growth"
+                placeholder="e.g., off-camera flash, wedding marketing, posing couples"
                 required
               />
             </div>
 
             <div className="field">
               <label htmlFor="audience">Audience</label>
+              <p className="desc">Who you're talking to. Naming the exact reader makes hooks hit harder.</p>
               <input
                 id="audience"
                 type="text"
                 value={audience}
                 onChange={(e) => setAudience(e.target.value)}
-                placeholder="e.g., founders, photographers, parents"
+                placeholder="e.g., wedding photographers, portrait shooters, creators"
               />
             </div>
 
             <div className="field">
               <label htmlFor="result">Result</label>
+              <p className="desc">The outcome they actually want. The dream after they apply your advice.</p>
               <input
                 id="result"
                 type="text"
                 value={result}
                 onChange={(e) => setResult(e.target.value)}
-                placeholder="e.g., 10k followers, 100 booked calls"
+                placeholder="e.g., a fully booked season, $5k weddings, sold-out workshop"
               />
             </div>
 
             <div className="field">
               <label htmlFor="timeframe">Timeframe</label>
+              <p className="desc">How fast they can get there. Specificity creates urgency.</p>
               <input
                 id="timeframe"
                 type="text"
                 value={timeframe}
                 onChange={(e) => setTimeframe(e.target.value)}
-                placeholder="e.g., 30 days, 6 months"
+                placeholder="e.g., one wedding season, 30 days, your next shoot"
               />
             </div>
 
             <div className="field">
               <label htmlFor="amount">Amount / Stake</label>
+              <p className="desc">A dollar figure or thing at risk. The number that makes the reader flinch.</p>
               <input
                 id="amount"
                 type="text"
                 value={amount}
                 onChange={(e) => setAmount(e.target.value)}
-                placeholder="e.g., $10k, 100 hours"
+                placeholder="e.g., $5k clients, your first $10k month, gear you'll regret"
               />
             </div>
 
@@ -237,7 +243,7 @@ export default function App() {
       </main>
 
       <footer className="footer">
-        <strong>Hook Forge</strong> &middot; Skinned with the MagMod Design System
+        <strong>Hook Forge</strong> &middot; Built for photographers &middot; Skinned with the MagMod Design System
       </footer>
     </div>
   )
