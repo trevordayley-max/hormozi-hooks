@@ -1,0 +1,295 @@
+/* MagMod Design System — Colors & Type */
+/* Source: Figma "Component Library" + "Website Dev File" */
+
+/* Gotham Pro — MagMod's brand typeface, self-hosted. */
+@font-face {
+  font-family: 'Gotham Pro';
+  src: url('/assets/fonts/GothamPro-Light.woff2') format('woff2'),
+       url('/assets/fonts/GothamPro-Light.woff')  format('woff');
+  font-weight: 300; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Gotham Pro';
+  src: url('/assets/fonts/GothamPro-LightItalic.woff2') format('woff2'),
+       url('/assets/fonts/GothamPro-LightItalic.woff')  format('woff');
+  font-weight: 300; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: 'Gotham Pro';
+  src: url('/assets/fonts/GothamPro.woff2') format('woff2'),
+       url('/assets/fonts/GothamPro.woff')  format('woff');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Gotham Pro';
+  src: url('/assets/fonts/GothamPro-Italic.woff2') format('woff2'),
+       url('/assets/fonts/GothamPro-Italic.woff')  format('woff');
+  font-weight: 400; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: 'Gotham Pro';
+  src: url('/assets/fonts/GothamPro-Medium.woff2') format('woff2'),
+       url('/assets/fonts/GothamPro-Medium.woff')  format('woff');
+  font-weight: 500; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Gotham Pro';
+  src: url('/assets/fonts/GothamPro-MediumItalic.woff2') format('woff2'),
+       url('/assets/fonts/GothamPro-MediumItalic.woff')  format('woff');
+  font-weight: 500; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: 'Gotham Pro';
+  src: url('/assets/fonts/GothamPro-Bold.woff2') format('woff2'),
+       url('/assets/fonts/GothamPro-Bold.woff')  format('woff');
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Gotham Pro';
+  src: url('/assets/fonts/GothamPro-BoldItalic.woff2') format('woff2'),
+       url('/assets/fonts/GothamPro-BoldItalic.woff')  format('woff');
+  font-weight: 700; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: 'Gotham Pro';
+  src: url('/assets/fonts/GothamPro-Black.woff2') format('woff2'),
+       url('/assets/fonts/GothamPro-Black.woff')  format('woff');
+  font-weight: 900; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Gotham Pro';
+  src: url('/assets/fonts/GothamPro-BlackItalic.woff2') format('woff2'),
+       url('/assets/fonts/GothamPro-BlackItalic.woff')  format('woff');
+  font-weight: 900; font-style: italic; font-display: swap;
+}
+
+:root {
+  /* ──────────────── BRAND COLORS ──────────────── */
+  --mm-brand-light:   #ffbf00;   /* Primary Light */
+  --mm-brand:         #faaf17;   /* Primary / Marigold — signature */
+  --mm-brand-mid:     #d99305;   /* Primary Mid / Hover */
+  --mm-brand-dark:    #c78705;   /* Primary Dark / Press */
+
+  /* ──────────────── NEUTRAL ──────────────── */
+  --mm-white:         #ffffff;
+  --mm-neutral-100:   #f3f3f3;
+  --mm-neutral-150:   #eeedea;   /* warm off-white, common bg */
+  --mm-neutral-200:   #e7e7e7;
+  --mm-neutral-300:   #bcbcbc;
+  --mm-neutral-400:   #9c9c9c;
+  --mm-neutral-500:   #666666;
+  --mm-neutral-600:   #3c3c3c;
+  --mm-black:         #171717;   /* Brand black — NOT true black */
+  --mm-true-black:    #000000;
+
+  /* ──────────────── FUNCTIONAL ──────────────── */
+  --mm-warning:       #ffcc33;
+  --mm-warning-100:   #fff5d6;
+  --mm-warning-400:   #73400d;
+
+  --mm-error:         #e55335;
+  --mm-error-dark:    #d42e11;
+
+  --mm-success:       #7fbd75;
+  --mm-success-100:   #e5f2e3;
+  --mm-success-400:   #32532d;
+
+  --mm-focus-ring:    #1d8ec7;  /* blue focus outline */
+
+  /* ──────────────── SEMANTIC ──────────────── */
+  --fg-1:             var(--mm-black);
+  --fg-2:             var(--mm-neutral-500);
+  --fg-3:             var(--mm-neutral-400);
+  --fg-on-dark:       var(--mm-white);
+  --fg-on-brand:      var(--mm-black);     /* text on marigold stays dark */
+
+  --bg-page:          var(--mm-white);
+  --bg-raised:        var(--mm-neutral-100);
+  --bg-warm:          var(--mm-neutral-150);
+  --bg-dark:          var(--mm-black);
+  --bg-accent:        var(--mm-brand);
+
+  --stroke-1:         var(--mm-neutral-200);
+  --stroke-2:         var(--mm-neutral-300);
+  --stroke-strong:    var(--mm-black);
+
+  /* ──────────────── TYPE ──────────────── */
+  --font-display:     'Gotham Pro', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  --font-body:        'Gotham Pro', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  --font-mono:        'Roboto Mono', ui-monospace, Menlo, monospace;
+
+  /* Numeric scale (desktop). Mobile scales down ~15%. */
+  --fs-1:   13px;    /* micro / meta */
+  --fs-2:   15px;    /* body */
+  --fs-3:   18px;    /* body-large / H6 */
+  --fs-4:   21px;    /* H5 / subhead */
+  --fs-5:   26px;    /* H4 / pull-quote */
+  --fs-6:   31px;    /* H3 */
+  --fs-7:   38px;    /* H2 — section title */
+  --fs-8:   54px;    /* H1 */
+  --fs-9:   78px;    /* Hero */
+  --fs-10:  93px;    /* Display / Macro */
+
+  --fw-book:    400;
+  --fw-medium:  500;
+  --fw-bold:    700;
+  --fw-black:   900;
+
+  --lh-tight:   1.1;
+  --lh-snug:    1.25;
+  --lh-body:    1.35;
+  --lh-loose:   1.5;
+
+  --ls-tight:   -0.03em;   /* large display text */
+  --ls-eye:     0.05em;    /* "how it works" eyebrows */
+  --ls-cap:     0.10em;
+
+  /* ──────────────── SPACING / RADII ──────────────── */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 24px;
+  --sp-6: 32px;
+  --sp-7: 48px;
+  --sp-8: 64px;
+  --sp-9: 84px;
+  --sp-10: 120px;
+
+  --radius-none:   0;
+  --radius-sm:     2px;   /* focus outlines */
+  --radius-md:     5px;   /* rare — used on doc frames */
+  --radius-pill:   999px;
+
+  /* ──────────────── ELEVATION ──────────────── */
+  --shadow-text:    0 1px 4px rgba(0,0,0,0.25);   /* hero copy on photos */
+  --shadow-card:    0 2px 8px rgba(0,0,0,0.08);
+  --shadow-raised:  0 8px 24px rgba(0,0,0,0.12);
+  --shadow-focus:   0 0 0 2px var(--mm-focus-ring);
+
+  /* Brand accent bar height (under eyebrows) */
+  --accent-bar: 4px;
+}
+
+/* ──────────────── BASE ELEMENTS ──────────────── */
+body, html {
+  font-family: var(--font-body);
+  font-size: var(--fs-2);
+  line-height: var(--lh-body);
+  color: var(--fg-1);
+  background: var(--bg-page);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, .h1 {
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-9);          /* hero */
+  line-height: var(--lh-snug);
+  letter-spacing: var(--ls-tight);
+  color: var(--fg-1);
+}
+
+h2, .h2 {
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-7);
+  line-height: var(--lh-tight);
+  color: var(--fg-1);
+}
+
+h3, .h3 {
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-6);
+  line-height: var(--lh-tight);
+}
+
+h4, .h4 {
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-5);
+  line-height: var(--lh-tight);
+}
+
+h5, .h5 {
+  font-family: var(--font-display);
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-4);
+  line-height: var(--lh-snug);
+}
+
+h6, .h6 {
+  font-family: var(--font-display);
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-3);
+  line-height: var(--lh-snug);
+}
+
+p {
+  font-size: var(--fs-2);
+  line-height: var(--lh-body);
+  color: var(--fg-1);
+  text-wrap: pretty;
+}
+
+.eyebrow {
+  font-family: var(--font-display);
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-2);
+  letter-spacing: var(--ls-eye);
+  text-transform: none;          /* brand uses sentence/title case eyebrows */
+  color: inherit;
+}
+
+.eyebrow::after {
+  content: '';
+  display: block;
+  margin-top: 8px;
+  width: 72px;
+  height: var(--accent-bar);
+  background: var(--mm-brand);
+}
+
+a {
+  color: var(--fg-1);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.15s ease;
+}
+a:hover { color: var(--mm-neutral-500); }
+
+code, pre, .mono {
+  font-family: var(--font-mono);
+  font-size: var(--fs-1);
+}
+
+/* ──────────────── BUTTONS ──────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2);
+  padding: 13px 60px 15px;
+  font-family: var(--font-display);
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-2);
+  line-height: var(--lh-snug);
+  border: none;
+  border-radius: 0;             /* MagMod buttons are sharp — no radius */
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+  text-decoration: none;
+}
+.btn-primary       { background: var(--mm-brand); color: var(--mm-black); }
+.btn-primary:hover { background: var(--mm-brand-mid); }
+.btn-primary:active{ background: var(--mm-brand-dark); }
+
+.btn-reverse       { background: var(--mm-black); color: var(--mm-white); }
+.btn-reverse:hover { background: var(--mm-brand-mid); color: var(--mm-black); }
+
+.btn-hollow        { background: transparent; color: var(--mm-black); border: 2px solid var(--mm-black); padding: 11px 58px 13px; }
+.btn-hollow:hover  { background: var(--mm-brand-mid); color: var(--mm-black); border-color: var(--mm-brand-mid); }
+
+.btn:focus-visible { outline: none; box-shadow: var(--shadow-focus); border-radius: var(--radius-sm); }
+.btn[disabled]     { background: var(--mm-neutral-200); color: var(--mm-neutral-500); cursor: not-allowed; }

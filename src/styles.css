@@ -1,0 +1,252 @@
+/* App-level styles. Builds on /assets/colors_and_type.css */
+
+* { box-sizing: border-box; }
+html, body, #root { margin: 0; padding: 0; min-height: 100%; }
+body { background: var(--bg-warm); }
+
+button { font-family: inherit; }
+input, textarea, select {
+  font-family: var(--font-body);
+  font-size: var(--fs-2);
+  line-height: var(--lh-body);
+  color: var(--fg-1);
+  background: var(--mm-white);
+  border: 1px solid var(--stroke-1);
+  border-radius: 0;
+  padding: 12px 14px;
+  width: 100%;
+  transition: border-color 0.15s ease;
+}
+input:hover, textarea:hover, select:hover { border-color: var(--stroke-2); }
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--mm-black);
+  box-shadow: var(--shadow-focus);
+}
+
+/* ── Layout ─────────────────────────────── */
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.nav {
+  background: var(--mm-black);
+  color: var(--mm-white);
+  padding: 18px var(--sp-7);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 4px solid var(--mm-brand);
+}
+.nav-brand { display: flex; align-items: center; gap: var(--sp-3); }
+.nav-brand img { height: 22px; display: block; }
+.nav-brand .divider { width: 1px; height: 22px; background: var(--mm-neutral-500); }
+.nav-brand .product-name {
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-3);
+  letter-spacing: var(--ls-eye);
+  text-transform: uppercase;
+}
+.nav-tag {
+  font-family: var(--font-display);
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-1);
+  letter-spacing: var(--ls-cap);
+  text-transform: uppercase;
+  color: var(--mm-neutral-300);
+}
+
+.hero {
+  background: var(--mm-black);
+  color: var(--mm-white);
+  padding: var(--sp-9) var(--sp-7) var(--sp-10);
+}
+.hero-inner { max-width: 1100px; margin: 0 auto; }
+.hero .eyebrow { color: var(--mm-white); }
+.hero h1 {
+  color: var(--mm-white);
+  font-size: clamp(44px, 7vw, var(--fs-9));
+  margin: var(--sp-5) 0 var(--sp-4);
+  max-width: 900px;
+}
+.hero h1 em {
+  font-style: normal;
+  color: var(--mm-brand);
+}
+.hero p.lede {
+  font-size: var(--fs-4);
+  font-weight: var(--fw-book);
+  color: var(--mm-neutral-300);
+  max-width: 680px;
+  margin: 0;
+}
+
+.workbench {
+  flex: 1;
+  background: var(--bg-warm);
+  padding: var(--sp-7) var(--sp-7) var(--sp-10);
+}
+.workbench-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: var(--sp-7);
+}
+@media (max-width: 880px) {
+  .workbench-inner { grid-template-columns: 1fr; }
+  .hero, .workbench, .nav { padding-left: var(--sp-5); padding-right: var(--sp-5); }
+}
+
+/* ── Cards & panels ────────────────────────── */
+.panel {
+  background: var(--mm-white);
+  border: 1px solid var(--stroke-1);
+  padding: var(--sp-6);
+}
+.panel + .panel { margin-top: var(--sp-5); }
+
+.field { margin-bottom: var(--sp-4); }
+.field label {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-1);
+  letter-spacing: var(--ls-eye);
+  margin-bottom: var(--sp-2);
+}
+.field .hint {
+  font-size: var(--fs-1);
+  color: var(--fg-2);
+  margin-top: 4px;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-5);
+  margin: 0 0 var(--sp-2);
+}
+
+/* Eyebrow override so it sits on dark and light surfaces */
+.eyebrow.on-dark { color: var(--mm-white); }
+.eyebrow.on-dark::after { background: var(--mm-brand); }
+
+/* ── Filter chips ─────────────────────────── */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+  margin-top: var(--sp-2);
+}
+.chip {
+  background: var(--mm-white);
+  border: 1px solid var(--stroke-2);
+  color: var(--fg-1);
+  padding: 8px 14px;
+  font-family: var(--font-display);
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-1);
+  letter-spacing: var(--ls-eye);
+  cursor: pointer;
+  border-radius: 0;
+  transition: all 0.15s ease;
+}
+.chip:hover { border-color: var(--mm-black); }
+.chip[data-active="true"] {
+  background: var(--mm-black);
+  color: var(--mm-white);
+  border-color: var(--mm-black);
+}
+
+/* ── Buttons ─────────────────────────────── */
+.btn-row { display: flex; gap: var(--sp-3); margin-top: var(--sp-5); }
+.btn-block { width: 100%; }
+
+/* ── Hooks list ──────────────────────────── */
+.results-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: var(--sp-5);
+}
+.results-meta {
+  font-family: var(--font-mono);
+  font-size: var(--fs-1);
+  color: var(--fg-2);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-eye);
+}
+.empty {
+  background: var(--mm-white);
+  border: 1px dashed var(--stroke-2);
+  padding: var(--sp-8);
+  text-align: center;
+  color: var(--fg-2);
+}
+.hook-list { display: grid; gap: var(--sp-3); }
+.hook {
+  background: var(--mm-white);
+  border: 1px solid var(--stroke-1);
+  padding: var(--sp-5);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--sp-4);
+  align-items: start;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+.hook:hover { border-color: var(--mm-black); }
+.hook-text {
+  font-family: var(--font-display);
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-3);
+  line-height: var(--lh-snug);
+  color: var(--fg-1);
+}
+.hook-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  margin-top: var(--sp-3);
+}
+.hook-cat {
+  font-family: var(--font-display);
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-1);
+  letter-spacing: var(--ls-eye);
+  text-transform: uppercase;
+  color: var(--fg-2);
+  border-left: 4px solid var(--mm-brand);
+  padding-left: 10px;
+}
+.copy-btn {
+  background: transparent;
+  border: 2px solid var(--mm-black);
+  color: var(--mm-black);
+  padding: 8px 16px;
+  font-family: var(--font-display);
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-1);
+  letter-spacing: var(--ls-eye);
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 0;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+.copy-btn:hover { background: var(--mm-brand); border-color: var(--mm-brand); }
+.copy-btn[data-copied="true"] { background: var(--mm-black); color: var(--mm-white); }
+
+/* ── Footer ──────────────────────────────── */
+.footer {
+  background: var(--mm-black);
+  color: var(--mm-neutral-300);
+  padding: var(--sp-6) var(--sp-7);
+  font-size: var(--fs-1);
+  letter-spacing: var(--ls-eye);
+  text-align: center;
+}
+.footer strong { color: var(--mm-white); }
